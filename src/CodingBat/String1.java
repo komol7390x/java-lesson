@@ -81,8 +81,16 @@ public class String1 {
         return str.substring(0,n)+ str.substring(str.length()-n);
     }
 
-    public String twoChar(String str, int index) {
-        return "";
+    public String conCat(String a, String b) {
+        if (a.length() == 0 || b.length() == 0) return a + b;
+        if (a.charAt(a.length() - 1) == b.charAt(0)) return a + b.substring(1);
+        return a + b;
     }
 
+    public boolean frontAgain(String str) {
+        if (str.length() < 2)return false;
+        String front = str.substring(0, 2);
+        String end = str.substring(str.length() - 2);
+        return front.equals(end);
+        }
 }
