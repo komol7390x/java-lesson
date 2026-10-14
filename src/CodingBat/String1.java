@@ -39,6 +39,7 @@ public class String1 {
     public String seeColor(String str) {
         return  str.startsWith("red")?"red":str.startsWith("blue")?"blue":"";
     }
+
     public String extraFront(String str) {
         int len = Math.min(str.length(), 2);
         String front = str.substring(0, len);
@@ -70,4 +71,18 @@ public class String1 {
         if(str.length()<=2) return  str;
         return str.substring(2)+str.substring(0,2);
     }
+
+    public String withouEnd2(String str) {
+        if(str.length() <= 2) return "";
+        return  str.substring(1,str.length()-1);
+    }
+
+    public String nTwice(String str, int n) {
+        return str.substring(0,n)+ str.substring(str.length()-n);
+    }
+
+    public String twoChar(String str, int index) {
+        return "";
+    }
+
 }
