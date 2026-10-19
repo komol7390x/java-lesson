@@ -3,6 +3,8 @@ package Main.Market;
 import Main.Market.type.ProductInfo;
 
 public class Menu extends Utils {
+    Product product = new Product();
+
     public void showMenu() {
         printLine('=', 40);
         System.out.println("1. Mahsulotlar ro'yhati");
@@ -37,9 +39,18 @@ public class Menu extends Utils {
                 0);
     }
 
-    public void addCart(){
+    public void addCart() {
+        showProductList();
+        int number = readNumber("Qaysi mahsulotni kiritmoqchisz? (0-Bekor)\t", 0, this.product.productLength);
+        if (number == 0) showMenu();
+        number = number - 1;
+        int available = Product.productInfo[number].stock - this.product.cart[number];
+        if (available < 0) System.out.println(Product.productInfo[number].name + " mahsulot qolmagan");
+        int quantity=readNumber("Nechta maxsult sotib olasiz?\t",1,available);
+        this.product.cart[number]+=quantity;
+        System.out.println("Savatga " + quantity + " ta mahsulot qoshildi!");
     }
 
-void main() {
-}
+    void main() {
+    }
 }

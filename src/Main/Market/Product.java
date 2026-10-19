@@ -3,7 +3,8 @@ package Main.Market;
 import Main.Market.type.ProductInfo;
 
 public class Product {
-    static public ProductInfo[] productInfo={
+
+    public static ProductInfo[] productInfo = {
             new ProductInfo("Non", 3500.0, 50),
             new ProductInfo("Sut 1L", 11000.0, 30),
             new ProductInfo("Tuxum (10 talik)", 18000.0, 40),
@@ -26,11 +27,10 @@ public class Product {
             new ProductInfo("Suv 1.5L", 4000.0, 90)
     };
 
-    static int[] cart=new int[productInfo.length];
-    static int[] sold=new int[productInfo.length];
-
-    static int dailyRevenue=0;
-    static int receiptNumber=0;
-
+    public int productLength = productInfo.length;
+    public int[] cart = new int[productLength];
+    public int[] sold = new int[productLength];
+    int dailyRevenue = 0;
+    int receiptNumber = 0;
 };
 
