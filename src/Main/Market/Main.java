@@ -20,6 +20,8 @@ public class Main {
                 case 2:
                     this.menu.addCart();
                     break;
+                case 3:
+                    break;
                 case 0:
                     isRunning = false;
                     break;

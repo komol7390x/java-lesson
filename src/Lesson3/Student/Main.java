@@ -23,6 +23,8 @@ public class Main {
         System.out.println(b.getAmount()); // 600000 (yangi object)
 
 
+         
+
     }
 
 }
