@@ -46,5 +46,18 @@ public class Product {
         this.price=newPrice;
     }
 
+    public int[] makeEnds(int[] nums) {
+        if (nums.length == 0) return new int[] {};
+        return new int[] { nums[0], nums[nums.length - 1] };
+    }
+
+    public int[] makeLast(int[] nums) {
+        int[] result = new int[nums.length * 2];
+        result[result.length - 1] = nums[nums.length - 1];
+        return result;
+    }
+
+    
+
 
 }

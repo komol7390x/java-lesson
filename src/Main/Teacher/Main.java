@@ -1,4 +1,4 @@
-package Main;
+package Main.Teacher;
 
 public class Main {
         static byte b;

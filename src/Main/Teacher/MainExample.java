@@ -1,4 +1,4 @@
-package Main;
+package Main.Teacher;
 
 import java.util.Scanner;
 
