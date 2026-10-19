@@ -21,6 +21,7 @@ public class Main {
                     this.menu.addCart();
                     break;
                 case 3:
+
                     break;
                 case 0:
                     isRunning = false;

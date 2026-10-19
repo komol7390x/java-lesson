@@ -46,11 +46,21 @@ public class Menu extends Utils {
         number = number - 1;
         int available = Product.productInfo[number].stock - this.product.cart[number];
         if (available < 0) System.out.println(Product.productInfo[number].name + " mahsulot qolmagan");
-        int quantity=readNumber("Nechta maxsult sotib olasiz?\t",1,available);
-        this.product.cart[number]+=quantity;
+        int quantity = readNumber("Nechta maxsult sotib olasiz?\t", 1, available);
+        this.product.cart[number] += quantity;
         System.out.println("Savatga " + quantity + " ta mahsulot qoshildi!");
     }
 
-    void main() {
+    public void showCart() {
+        if (this.isEmpty()) System.out.println("Savat bo'sh");
+        System.out.println();
+        System.out.println("---------------SAVAT----------------");
+    }
+
+    public boolean isEmpty() {
+        for (int quantity : this.product.cart) {
+            if (quantity > 0) return false;
+        }
+        return true;
     }
 }
