@@ -51,16 +51,44 @@ public class Menu extends Utils {
         System.out.println("Savatga " + quantity + " ta mahsulot qoshildi!");
     }
 
+    public void removeFromCart() {
+        if (isEmpty()) System.out.println("Savat bo'sh");
+        showCart();
+        int number = readNumber("Qaysi mahsulotni olmoqchisz? (0-Bekor)", 0, this.product.productLength);
+        if (number == 0) showMenu();
+        if (this.product.cart[number] == 0) System.out.println("Savat mahsulot yoq");
+        int quantity = readNumber("Nechta olib tashlamoqchisz?\t", 1, this.product.cart[number]);
+        this.product.cart[number] -= quantity;
+        System.out.println("Savatdan " + quantity + " ta " + Product.productInfo[number].name + " olindi");
+    }
+
     public void showCart() {
         if (this.isEmpty()) System.out.println("Savat bo'sh");
         System.out.println();
         System.out.println("---------------SAVAT----------------");
+        for (int i = 0; i < this.product.productLength; i++) {
+            if (this.product.cart[i] > 0) {
+                System.out.printf("%-3d %-15s %3d x %9s = %10s%n", i + 1, Product.productInfo[i].name, this.product.cart[i], Product.productInfo[i].price, this.product.cart[i] * Product.productInfo[i].price);
+            }
+            printLine('-', 40);
+            System.out.println("Jami: " + cartTotal() + " so\'m");
+        }
     }
 
-    public boolean isEmpty() {
+    private boolean isEmpty() {
         for (int quantity : this.product.cart) {
             if (quantity > 0) return false;
         }
         return true;
     }
+
+    private static int cartTotal() {
+        int total = 0;
+        Product product = new Product();
+        for (int i = 0; i < product.cart.length; i++) {
+            total += (int) (Product.productInfo[i].price * product.cart[i]);
+        }
+        return total;
+    }
+
 }
