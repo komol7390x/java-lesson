@@ -19,7 +19,7 @@ public class Product {
     }
 
     public double getFinalPrice() {
-        return price;
+        return this.price;
     }
 
     public long getId() {
@@ -27,7 +27,7 @@ public class Product {
     }
 
     protected double basePrice() {
-        return price;
+        return this.price;
     }
 
     @Override

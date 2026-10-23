@@ -5,7 +5,6 @@ public class Car {
     int year; //default
     public String model;// public
 
-
     public void changeName(String name) {
         this.name = name;
     }
