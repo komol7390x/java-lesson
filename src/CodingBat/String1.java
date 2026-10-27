@@ -2,42 +2,42 @@ package CodingBat;
 
 public class String1 {
     public String makeOutWord(String out, String word) {
-        return out.substring(0,2)+word+out.substring(2,4);
+        return out.substring(0, 2) + word + out.substring(2, 4);
     }
 
     public String firstHalf(String str) {
-        return  str.substring(0,str.length()/2);
+        return str.substring(0, str.length() / 2);
     }
 
     public String nonStart(String a, String b) {
-        return  a.substring(1)+b.substring(1);
+        return a.substring(1) + b.substring(1);
     }
 
     public String theEnd(String str, boolean front) {
-        if(front){
-            return str.substring(0,1);
-        }else {
-            return  str.substring(str.length()-1);
+        if (front) {
+            return str.substring(0, 1);
+        } else {
+            return str.substring(str.length() - 1);
         }
     }
 
     public boolean endsLy(String str) {
-        if(str.length()<2 || str.isEmpty()) return  false;
-        return  str.substring(str.length()-2).equals("ly");
+        if (str.length() < 2 || str.isEmpty()) return false;
+        return str.substring(str.length() - 2).equals("ly");
     }
 
     public String middleThree(String str) {
-        return  str.substring(str.length()/2-1,str.length()/2+2);
+        return str.substring(str.length() / 2 - 1, str.length() / 2 + 2);
     }
 
     public String lastChars(String a, String b) {
-        String first=(a.length()>0)? a.substring(0,1):"@";
-        String second=(b.length()>0)? b.substring(b.length()-1):"@";
-        return  first+second;
+        String first = (a.length() > 0) ? a.substring(0, 1) : "@";
+        String second = (b.length() > 0) ? b.substring(b.length() - 1) : "@";
+        return first + second;
     }
 
     public String seeColor(String str) {
-        return  str.startsWith("red")?"red":str.startsWith("blue")?"blue":"";
+        return str.startsWith("red") ? "red" : str.startsWith("blue") ? "blue" : "";
     }
 
     public String extraFront(String str) {
@@ -45,6 +45,7 @@ public class String1 {
         String front = str.substring(0, len);
         return front + front + front;
     }
+
     public String startWord(String str, String word) {
         if (str.length() < word.length()) {
             return "";
@@ -52,33 +53,34 @@ public class String1 {
         if (str.startsWith(word.substring(1), 1)) {
             return str.substring(0, word.length());
         }
-        return  "";
+        return "";
     }
 
     public String makeAbba(String a, String b) {
-    return a+b+b+a;
+        return a + b + b + a;
     }
 
     public String extraEnd(String str) {
-        String string=str.substring(str.length()-2);
+        String string = str.substring(str.length() - 2);
         return string.repeat(3);
     }
 
     public String withoutEnd(String str) {
         return str.substring(1, str.length() - 1);
     }
+
     public String left2(String str) {
-        if(str.length()<=2) return  str;
-        return str.substring(2)+str.substring(0,2);
+        if (str.length() <= 2) return str;
+        return str.substring(2) + str.substring(0, 2);
     }
 
     public String withouEnd2(String str) {
-        if(str.length() <= 2) return "";
-        return  str.substring(1,str.length()-1);
+        if (str.length() <= 2) return "";
+        return str.substring(1, str.length() - 1);
     }
 
     public String nTwice(String str, int n) {
-        return str.substring(0,n)+ str.substring(str.length()-n);
+        return str.substring(0, n) + str.substring(str.length() - n);
     }
 
     public String conCat(String a, String b) {
@@ -88,9 +90,31 @@ public class String1 {
     }
 
     public boolean frontAgain(String str) {
-        if (str.length() < 2)return false;
+        if (str.length() < 2) return false;
         String front = str.substring(0, 2);
         String end = str.substring(str.length() - 2);
         return front.equals(end);
+    }
+
+    public String minCat(String a, String b) {
+        int len = Math.min(a.length(), b.length());
+        return a.substring(a.length() - len) + b.substring(b.length() - len);
+    }
+
+    public String deFront(String str) {
+        if (str.length() < 2) {
+            if (str.length() == 1 && str.charAt(0) == 'a') return "a";
+            return "";
         }
+        String result = "";
+        if (str.charAt(0) == 'a') {
+            result += 'a';
+        }
+        if (str.charAt(1) == 'b') {
+            result += 'b';
+        }
+
+        return result + str.substring(2);
+    }
+
 }
