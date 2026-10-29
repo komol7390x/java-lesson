@@ -87,9 +87,50 @@ public class Logic1 {
 
     public boolean answerCell(boolean isMorning, boolean isMom, boolean isAsleep) {
         if (isAsleep) return false;
-        if (isMorning && !isMom) {
-            return false;
-        }
-        return true;
+        return !isMorning || isMom;
     }
+
+    public int teaParty(int tea, int candy) {
+        if (tea < 5 || candy < 5) return 0;
+        if (tea >= 2 * candy || candy >= 2 * tea) return 2;
+        return 1;
+    }
+
+    public String fizzString(String str) {
+        if (str.charAt(0) == 'f' && str.charAt(str.length() - 1) == 'b') return "FizzBuzz";
+        else if (str.charAt(0) == 'f') return "Fizz";
+        else if (str.charAt(str.length() - 1) == 'b') return "Buzz";
+        else return str;
+    }
+
+    public String fizzString2(int n) {
+        if (n % 3 == 0 && n % 5 == 0) return "FizzBuzz!";
+        else if (n % 3 == 0) return "Fizz!";
+        else if (n % 5 == 0) return "Buzz!";
+        else return n + "!";
+    }
+
+    public boolean twoAsOne(int a, int b, int c) {
+        return (a + b == c) || (a + c == b) || (b + c == a);
+    }
+
+    public boolean inOrderEqual(int a, int b, int c, boolean equalOk) {
+        return equalOk ? a <= b && b <= c : a < b && b < c;
+    }
+
+    public boolean lastDigit(int a, int b, int c) {
+        int x = a % 10;
+        int y = b % 10;
+        int z = c % 10;
+        return x == y || y == z || z == x;
+    }
+
+    public boolean lessBy10(int a, int b, int c) {
+        boolean x = Math.abs(a - b) >= 10;
+        boolean y = Math.abs(c - b) >= 10;
+        boolean z = Math.abs(c - a) >= 10;
+        return x || y || z;
+    }
+
+
 }
