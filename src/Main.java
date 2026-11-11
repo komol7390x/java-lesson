@@ -57,8 +57,19 @@ public class Main {
         Set<String> setA = Set.of("Zebra", "Apple", "Mango");
         Set<String> setB = Set.of("Banana", "Apple", "Orange");
 //        changeTreeSet(setA, setB);
-    }
 
+//        4
+        Set<Integer> setX = new HashSet<>(Set.of(1, 2, 3, 4, 5, 6));
+        Set<Integer> setY = new HashSet<>(Set.of(4, 5, 6, 7, 8));
+//        notDifference(setX,setY);
+
+//        5
+        String input = "programming in java";
+//        findDuplicates(input);
+
+        String sentence = "olma uzum anor olma gilos uzum anjir";
+//        sortText(sentence);
+    }
 
     public static void sortArrayList(List<Integer> list) {
         Collections.sort(list, Collections.reverseOrder());
@@ -185,5 +196,30 @@ public class Main {
         unionSet.addAll(setB);
 
         System.out.println(unionSet);
+    }
+
+    public static void notDifference(Set<Integer> setA, Set<Integer> setB) {
+        setA.removeAll(setB);
+        System.out.println(setA);
+    }
+
+    public static void findDuplicates(String text) {
+        Set<Character> seen = new HashSet<>();
+        Set<Character> duplicates = new HashSet<>();
+
+        for (char c : text.toCharArray()) {
+            if (c == ' ') {
+                continue;
+            }
+            if (!seen.add(c)) {
+                duplicates.add(c);
+            }
+        }
+        System.out.println(duplicates);
+    }
+
+    public static void sortText(String text) {
+        TreeSet<String> array = new TreeSet<>(List.of(text.trim().split(" ")));
+        System.out.println(array);
     }
 }
