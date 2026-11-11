@@ -32,8 +32,7 @@ public class Main {
 //        findCommonElements(l1, l2);
 
 //        8
-        List<String> langs = List.of("Java", "Python", "Java", "C++", "Java", "Go",
-                "Python");
+        List<String> langs = List.of("Java", "Python", "Java", "C++", "Java", "Go", "Python");
 //        calculateElementFrequency(langs, "Java");
 
 //        9
@@ -42,9 +41,24 @@ public class Main {
 
 //        10
         List<String> queueInput = List.of("Task1", "Task2", "Task3", "Task4");
-        simulateQueue(queueInput);
+//        simulateQueue(queueInput);
 
+//        --------------------- SET ---------------------
+//        1
+        String text = "java collections framework tutorial";
+//        uniqueItem(text);
+
+//        2
+        Set<Integer> s1 = new HashSet<>(Set.of(10, 20, 30, 40, 50));
+        Set<Integer> s2 = new HashSet<>(Set.of(30, 40, 50, 60, 70));
+//        intersection(s1, s2);
+
+//        3
+        Set<String> setA = Set.of("Zebra", "Apple", "Mango");
+        Set<String> setB = Set.of("Banana", "Apple", "Orange");
+//        changeTreeSet(setA, setB);
     }
+
 
     public static void sortArrayList(List<Integer> list) {
         Collections.sort(list, Collections.reverseOrder());
@@ -147,5 +161,29 @@ public class Main {
             String removed = queue.poll();
             System.out.println("Dequeue: " + removed + " -> Qolgan navbat: " + queue);
         }
+    }
+
+    public static void uniqueItem(String text) {
+        Set<Character> uniqueChars = new HashSet<>();
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            if (c != ' ') uniqueChars.add(c);
+        }
+        System.out.println(uniqueChars);
+    }
+
+    public static void intersection(Set<Integer> s1, Set<Integer> s2) {
+        Set<Integer> result = new HashSet<>();
+        for (Integer i : s1) {
+            if (s2.contains(i)) result.add(i);
+        }
+        System.out.println(result);
+    }
+
+    public static void changeTreeSet(Set<String> setA, Set<String> setB) {
+        TreeSet<String> unionSet = new TreeSet<>(setA);
+        unionSet.addAll(setB);
+
+        System.out.println(unionSet);
     }
 }
