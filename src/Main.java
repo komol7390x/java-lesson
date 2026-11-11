@@ -67,8 +67,22 @@ public class Main {
         String input = "programming in java";
 //        findDuplicates(input);
 
+//        6
         String sentence = "olma uzum anor olma gilos uzum anjir";
 //        sortText(sentence);
+
+//        7
+        Set<Integer> mainSet = Set.of(1, 2, 3, 4, 5, 6, 7);
+        Set<Integer> subSet = Set.of(2, 4, 6, 8);
+//        checkSubSet(mainSet, subSet);
+
+//        8
+        TreeSet<Integer> tree = new TreeSet<>(Set.of(10, 20, 30, 40, 50));
+//        findMinNumber(tree, 25);
+
+//        9
+        String str = "The quick brown fox jumps over the lazy dog";
+//        isPangram(str);
     }
 
     public static void sortArrayList(List<Integer> list) {
@@ -221,5 +235,37 @@ public class Main {
     public static void sortText(String text) {
         TreeSet<String> array = new TreeSet<>(List.of(text.trim().split(" ")));
         System.out.println(array);
+    }
+
+    public static void checkSubSet(Set<Integer> mainSet, Set<Integer> subSet) {
+        for (Integer i : subSet) {
+            if (!mainSet.contains(i)) {
+                System.out.println("No");
+                return;
+            }
+        }
+        System.out.println("Yes");
+    }
+
+    public static void findMinNumber(TreeSet<Integer> numbers, int maxNumber) {
+        int number = 0;
+        for (Integer i : numbers) {
+            if (maxNumber < i) {
+                number = i;
+                break;
+            }
+        }
+        System.out.println(maxNumber + " dan katta bolgan eng kichik son: " + number);
+    }
+
+    public static void isPangram(String s) {
+        Set<Character> set = new HashSet<>();
+        for (char c : s.toLowerCase().toCharArray()) {
+            if (c >= 'a' && c <= 'z') {
+                set.add(c);
+            }
+        }
+        boolean result = set.size() == 26;
+        System.out.println(result ? "yes" : "no");
     }
 }
