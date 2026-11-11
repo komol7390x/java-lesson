@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     static void main(String[] args) {
@@ -27,6 +25,24 @@ public class Main {
 //        6
         List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 //        chunkList(list, 3);
+
+//        7
+        List<Integer> l1 = List.of(1, 3, 5, 7, 9);
+        List<Integer> l2 = List.of(3, 4, 5, 6, 7);
+//        findCommonElements(l1, l2);
+
+//        8
+        List<String> langs = List.of("Java", "Python", "Java", "C++", "Java", "Go",
+                "Python");
+//        calculateElementFrequency(langs, "Java");
+
+//        9
+        List<Integer> nums = List.of(40, 10, 90, 20, 70, 50, 80);
+//        maxNumber(nums, 3);
+
+//        10
+        List<String> queueInput = List.of("Task1", "Task2", "Task3", "Task4");
+        simulateQueue(queueInput);
 
     }
 
@@ -84,5 +100,52 @@ public class Main {
         }
 
         System.out.println(chunkList);
+    }
+
+    public static void findCommonElements(List<Integer> list1, List<Integer> list2) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < list1.size(); i++) {
+            if (list2.contains(list1.get(i))) {
+                list.add(list1.get(i));
+            }
+        }
+        System.out.println(list);
+    }
+
+    public static void calculateElementFrequency(List<String> langs, String lang) {
+        int count = 0;
+        for (String text : langs) {
+            if (text.trim().equals(lang.trim())) {
+                count++;
+            }
+        }
+        System.out.println(lang + " so'zi " + count + " marta ishlatilgan");
+    }
+
+    public static void maxNumber(List<Integer> list, int maxNumber) {
+        List<Integer> numberList = new ArrayList<>();
+        for (Integer i : list) {
+            if (!numberList.contains(i)) {
+                numberList.add(i);
+            }
+        }
+        Collections.sort(numberList, Collections.reverseOrder());
+        System.out.println(maxNumber + " eng katta son: " + numberList.get(maxNumber - 1));
+    }
+
+    public static void simulateQueue(List<String> queueInput) {
+        Queue<String> queue = new LinkedList<>();
+
+        for (String task : queueInput) {
+            queue.offer(task);
+            System.out.println("Enqueue: " + task + " -> Navbat: " + queue);
+        }
+
+        System.out.println("\n");
+
+        while (!queue.isEmpty()) {
+            String removed = queue.poll();
+            System.out.println("Dequeue: " + removed + " -> Qolgan navbat: " + queue);
+        }
     }
 }
