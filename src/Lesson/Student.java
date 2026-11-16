@@ -1,13 +1,14 @@
+package Lesson;
+
 public class Student {
     private final String name;
     private final int age;
     private final int score;
+    private final boolean isActive;
 
     public boolean isActive() {
         return isActive;
     }
-
-    private final boolean isActive;
 
     public String getName() {
         return name;
@@ -22,6 +23,13 @@ public class Student {
     }
 
     public Student(String name, int age, int score, boolean isActive) {
+        this.name = name;
+        this.age = age;
+        this.score = score;
+        this.isActive = isActive;
+    }
+
+    public Student(String type, String name, int age, int score, boolean isActive) {
         this.name = name;
         this.age = age;
         this.score = score;
