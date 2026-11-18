@@ -117,7 +117,9 @@ public class Main {
 //        sortName();
 
 //        8
-        concatMap();
+//        concatMap();
+
+        findFirstItem("swiss");
     }
 
 
@@ -399,7 +401,20 @@ public class Main {
         Map<String, Integer> m1 = new HashMap<>(Map.of("A", 10, "B", 20));
         Map<String, Integer> m2 = Map.of("B", 15, "C", 30);
         Map<String, Integer> newMap = new HashMap<>(m1);
-        m2.forEach((k,v)->newMap.merge(k,v,Integer::sum));
+        m2.forEach((k, v) -> newMap.merge(k, v, Integer::sum));
         System.out.println(newMap);
+    }
+
+    public static void findFirstItem(String text) {
+        Map<Character, Integer> maps = new HashMap<>();
+        for (char c : text.toCharArray()) {
+            maps.merge(c, 1, Integer::sum);
+        }
+        for (Map.Entry<Character, Integer> entry : maps.entrySet()) {
+            if (entry.getValue() == 1) {
+                System.out.println("Belgi: "+entry.getKey());
+                break;
+            }
+        }
     }
 }
