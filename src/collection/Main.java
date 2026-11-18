@@ -6,7 +6,7 @@ public class Main {
     static void main(String[] args) {
 //        1
         List<Integer> list1 = new ArrayList<>(List.of(12, 45, 67, 23, 9, 88, 34, 5));
-        sortArrayList(list1);
+//        sortArrayList(list1);
 
 //        2
         List<String> words = new ArrayList<>(List.of("olma", "banan", "olma", "uzum", "banan", "nok", "olma"));
@@ -85,6 +85,28 @@ public class Main {
 //        9
         String str = "The quick brown fox jumps over the lazy dog";
 //        isPangram(str);
+
+//        10
+        int maxSize = 3;
+        List<String> requests = List.of("PageA", "PageB", "PageC", "PageA", "PageD");
+//        processRequests(maxSize,requests);
+
+//        1
+        String text3 = "java spring java boot spring java data";
+//        textChastota(text3);
+
+//        2
+        String s3 = "listen1", s4 = "silent";
+//        isAnagrammaOfMap(s3, s4);
+
+//        3
+        List<Integer> list2 = List.of(2, 3, 2, 5, 2, 3, 4, 3, 3, 1);
+//        maxKeyOfMap(list2);
+
+//        4
+        Map<String, Integer> map = Map.of("Ali", 101, "Vali", 102, "Sardor", 103);
+        changeKeyToMap(map);
+
     }
 
     public static void sortArrayList(List<Integer> list) {
@@ -269,5 +291,71 @@ public class Main {
         }
         boolean result = set.size() == 26;
         System.out.println(result ? "yes" : "no");
+    }
+
+    public static void processRequests(int maxSize, List<String> requests) {
+        Set<String> cache = new LinkedHashSet<>() {
+            @Override
+            public boolean add(String e) {
+                super.remove(e);
+                if (size() >= maxSize) {
+                    String oldest = iterator().next();
+                    remove(oldest);
+                }
+                return super.add(e);
+            }
+        };
+
+        for (String req : requests) {
+            cache.add(req);
+        }
+
+        System.out.println("Keshdagi elementlar: " + cache);
+    }
+
+    public static void textChastota(String text) {
+        List<String> arr = Arrays.stream(text.trim().split(" ")).toList();
+        Map<String, Integer> maps = new HashMap<>();
+        for (String s : arr) {
+            maps.put(s, maps.getOrDefault(s, 0) + 1);
+        }
+        System.out.println(maps);
+    }
+
+    public static void isAnagrammaOfMap(String t1, String t2) {
+        if (t1 == null || t2 == null || t1.length() != t2.length()) {
+            System.out.println("Bu anagramma emas");
+            return;
+        }
+
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < t1.length(); i++) {
+            map.merge(t1.charAt(i), 1, Integer::sum);
+            map.merge(t2.charAt(i), -1, Integer::sum);
+        }
+        boolean result = map.values().stream().allMatch(v -> v == 0);
+
+        System.out.println(result ? "Bu anagrama" : "Bu anagramma emas");
+    }
+
+    public static void maxKeyOfMap(List<Integer> list) {
+        Map<Integer, Integer> mapList = new HashMap<>();
+        for (Integer i : list) {
+            mapList.merge(i, 1, Integer::sum);
+        }
+        Map.Entry<Integer, Integer> maxEntry = mapList.entrySet()
+                .stream()
+                .max(Map.Entry.comparingByValue()).
+                orElse(null);
+        if (maxEntry != null) {
+            System.out.println("Key: " + maxEntry.getKey());
+            System.out.println("Value: " + maxEntry.getValue());
+        }
+    }
+
+    public static void changeKeyToMap(Map<String, Integer> map) {
+        Map<Integer, String> newMaps = new HashMap<>();
+        map.forEach((k, v) -> newMaps.put(v, k));
+        System.out.println(newMaps);
     }
 }
