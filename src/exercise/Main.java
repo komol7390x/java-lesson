@@ -22,6 +22,7 @@ public class Main {
 //        bankCard();   // 7
 //        alert();    // 8
 //        reapeat7(); // 9
+        footballApp();
 
     }
 
@@ -151,5 +152,20 @@ public class Main {
         repeat(5, i -> System.out.println("7 x " + i + " = " + (7 * i)));
         forEachIndex(list, (ind, city) -> System.out.println(ind + ") " + city));
 
+    }
+
+    public static void footballApp() {
+        EventBus bus = new EventBus();
+        int[] goalCount = {0};
+        bus.subscribe("goal",payload->System.out.println("GOL! " + payload));
+        bus.subscribe("goal",payload->goalCount[0]++);
+        bus.subscribe("card", payload -> System.out.println("Sariq kartochka: " + payload));
+
+        bus.publish("goal", "Nasaf 1:0");
+        bus.publish("card", "12-raqam");
+        bus.publish("goal", "Nasaf 2:0");
+        bus.publish("offside", "7-raqam");
+        
+        System.out.println("Jami gollar: " + goalCount[0]);
     }
 }
