@@ -105,9 +105,21 @@ public class Main {
 
 //        4
         Map<String, Integer> map = Map.of("Ali", 101, "Vali", 102, "Sardor", 103);
-        changeKeyToMap(map);
+//        changeKeyToMap(map);
 
+//        5
+//        groupByValue();
+
+//        6
+//        sortAlphabet();
+
+//        7
+//        sortName();
+
+//        8
+        concatMap();
     }
+
 
     public static void sortArrayList(List<Integer> list) {
         Collections.sort(list, Collections.reverseOrder());
@@ -343,10 +355,7 @@ public class Main {
         for (Integer i : list) {
             mapList.merge(i, 1, Integer::sum);
         }
-        Map.Entry<Integer, Integer> maxEntry = mapList.entrySet()
-                .stream()
-                .max(Map.Entry.comparingByValue()).
-                orElse(null);
+        Map.Entry<Integer, Integer> maxEntry = mapList.entrySet().stream().max(Map.Entry.comparingByValue()).orElse(null);
         if (maxEntry != null) {
             System.out.println("Key: " + maxEntry.getKey());
             System.out.println("Value: " + maxEntry.getValue());
@@ -357,5 +366,40 @@ public class Main {
         Map<Integer, String> newMaps = new HashMap<>();
         map.forEach((k, v) -> newMaps.put(v, k));
         System.out.println(newMaps);
+    }
+
+    public static void groupByValue() {
+        List<Student> students = List.of(new Student("Ali", 5), new Student("Vali", 4), new Student("Hasan", 5), new Student("Husan", 4));
+        Map<Integer, List<String>> map = new HashMap<>();
+        for (Student student : students) {
+            map.computeIfAbsent(student.getScore(), k -> new ArrayList<>()).add(student.getName());
+        }
+        System.out.println(map);
+    }
+
+    public static void sortAlphabet() {
+        Map<String, String> dict = new TreeMap<>();
+        dict.put("Apple", "Olma");
+        dict.put("Cat", "Mushuk");
+        dict.put("Book", "Kitob");
+
+        System.out.println(dict);
+    }
+
+    public static void sortName() {
+        Map<String, String> contacts = new HashMap<>(Map.of("Ali", "+998901234567", "Vali", "+998919876543"));
+        for (Map.Entry<String, String> entry : contacts.entrySet()) {
+            entry.setValue(entry.getValue());
+        }
+        System.out.println(contacts);
+
+    }
+
+    public static void concatMap() {
+        Map<String, Integer> m1 = new HashMap<>(Map.of("A", 10, "B", 20));
+        Map<String, Integer> m2 = Map.of("B", 15, "C", 30);
+        Map<String, Integer> newMap = new HashMap<>(m1);
+        m2.forEach((k,v)->newMap.merge(k,v,Integer::sum));
+        System.out.println(newMap);
     }
 }
